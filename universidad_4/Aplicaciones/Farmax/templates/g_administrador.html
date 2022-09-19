@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administradores</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+  <div  class="container d-flex align-items-center flex-column ">
+    <img class="masthead-avatar mb-5" src="https://dynamic.brandcrowd.com/asset/logo/8a8ab187-ec74-41f2-904f-c6a54f963e05/logo-search-grid-1x?v=637680972085430000&text=Farmacia+La+chabelita&colorpalette=blue" alt="Logotipo de la farmacia" />    
+  </div>
+
+  <ul class="nav nav-pills nav-fill">
+    <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="g_administrador.html">Administradores</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="g_principal.html">Pagina principal</a>
+    </li>
+  </ul>
+  
+  <div class="row">
+    <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
+      <h2 class="container py-4">Agregar Administradores</h2>
+      <div class="card">
+          <div class="card-body">
+              <form action="/registroadministrador/" method="POST">{% csrf_token %}
+                  </div>
+                  <div class="form-group py-3">
+                      <input type="text" id="txtNombres" name="txtNombres" class="form-control" placeholder="Nombres"
+                          maxlength="50" required>
+                  </div>
+                  <div class="form-group ">
+                      <input type="text" id="txtApellidos" name="txtApellidos" class="form-control" placeholder="Apellidos"
+                          maxlength="50" required>
+                  </div>
+                  <div class="form-group py-3">
+                    <input type="text" id="numCodigo" name="numCodigo" class="form-control" placeholder="Codigo"
+                        minlength="10" maxlength="10" required>
+                  </div>
+                  <div class="form-group py-3">
+                    <input type="text" id="numTelefono" name="numTelefono" class="form-control" placeholder="Telefono"
+                        maxlength="50" required>
+                </div>
+                  <div class="d-grid gap-2 py-3">
+                    <button class="btn btn-secondary" type="submit">Agregar</button>
+                  </div>
+              </form>
+          </div>
+      </div>
+ 
+    </div>
+    <div class="col-sm-12 col-md-6 col-lg-8 col-xl-8">
+      <h2 class="container py-4">Lista de Administradores</h2>
+      <div class="table-responsive py-2">
+        <table class="table table-striped">
+            <thead>
+              <th>Nombres</th>
+              <th>Apellidos</th>
+              <th>Codigo</th>
+              <th>Telefono</th>
+            </thead>
+            <tbody>
+                {%for i in Administradores%}
+                <tr>
+                    <td>{{i.nombres}}</td>
+                    <td>{{i.apellidos}}</td>
+                    <td>{{i.codigo}}</td>
+                    <td>{{i.telefono}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+     integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous">
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" 
+    integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous">
+  </script>
+    
+</body>
+</html>
